@@ -22,7 +22,7 @@
 
 ## 🚀 Live Demo
 
-Visit: [Your GitHub Pages URL will appear here]
+Visit: https://YOUR_USERNAME.github.io/nathra-aljhara/
 
 ## 📞 Contact
 
