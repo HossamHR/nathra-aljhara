@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="ar">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>قائمة الطعام - مطعم نثري الجهراء</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f5c73d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#0f0f0f",
+                        "glass": "rgba(255, 255, 255, 0.03)",
+                        "glass-border": "rgba(255, 255, 255, 0.08)",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans Arabic", "sans-serif"],
+                        "arabic": ["Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f5c73d;
+        }
+
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.4) 0%, rgba(20, 20, 20, 0.2) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(245, 199, 61, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(145deg, rgba(40, 40, 40, 0.5) 0%, rgba(30, 30, 30, 0.3) 100%);
+        }
+
+        .text-gold-gradient {
+            background: linear-gradient(to right, #f5c73d, #e8b72e, #f5c73d);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .category-link.active {
+            color: #f5c73d;
+            border-bottom-color: #f5c73d;
+        }
+
+        .menu-section {
+            scroll-margin-top: 140px;
+        }
+
+        body {
+            font-family: 'Noto Sans Arabic', 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-dark text-slate-100 overflow-x-hidden antialiased selection:bg-primary/30 selection:text-primary">
+    <div class="relative flex min-h-screen flex-col">
+        <header class="fixed top-0 w-full z-50 transition-all duration-300 glass-panel">
+            <div class="px-4 md:px-10 py-4 flex items-center justify-between max-w-7xl mx-auto">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+                        <span class="material-symbols-outlined">restaurant_menu</span>
+                    </div>
+                    <a class="text-white text-xl font-black tracking-tight font-arabic" href="index.html">مطعم نثري
+                        الجهراء</a>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-white/80 hover:text-primary text-sm font-medium transition-colors"
+                        href="index.html">الرئيسية</a>
+                    <a class="text-primary text-sm font-bold transition-colors relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-full after:h-0.5 after:bg-primary"
+                        href="menu.html">القائمة</a>
+                    <a class="text-white/80 hover:text-primary text-sm font-medium transition-colors"
+                        href="about.html">قصتنا</a>
+                    <a class="text-white/80 hover:text-primary text-sm font-medium transition-colors"
+                        href="gallery.html">معرض الصور</a>
+                    <a class="text-white/80 hover:text-primary text-sm font-medium transition-colors"
+                        href="contact.html">تواصل معنا</a>
+                </nav>
+                <div class="flex gap-3">
+                    <a href="reservations.html"
+                        class="hidden sm:flex h-10 px-5 items-center justify-center rounded-xl bg-primary hover:bg-yellow-500 text-background-dark text-sm font-bold transition-all shadow-[0_0_15px_rgba(245,199,61,0.2)]">
+                        <span>احجز طاولتك</span>
+                    </a>
+                    <button
+                        class="flex size-10 items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-colors">
+                        <span class="font-display font-bold text-xs">EN</span>
+                    </button>
+                    <button
+                        class="md:hidden flex size-10 items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <section class="relative h-[50vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div
+                    class="absolute inset-0 bg-gradient-to-b from-black/70 via-background-dark/50 to-background-dark z-10">
+                </div>
+                <div class="w-full h-full bg-cover bg-center bg-no-repeat"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBojo0ycrsVtB4puffMHvZiLe3kAkkMsR4O2cPr6G-zGoqrbGTDVi5aGWGojmLjB4ZwVHSRZOhHbBUAlWLEqRNUMZCVSQxME8iXjDu-Lsd4mUTITmYnHEiNr53Ytl2AjFNSBkJvWXWLeYL2mbmMPNOILZFjymfhP1YYh6WLunVlwlYP-dWA3dFpU2TkH8vvdeRy2KY0V_0103UtwycuUKtDyZbyjKa5r8DZVxDjANbfB_5IO70RPgO4ckc6XhJjz-2fKrHPI0-9iLA');">
+                </div>
+            </div>
+            <div class="relative z-20 max-w-7xl mx-auto px-6 text-center w-full mt-10">
+                <span
+                    class="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block animate-fade-in-up">مأكولات
+                    فاخرة</span>
+                <h1 class="text-white text-5xl md:text-7xl font-black leading-tight tracking-tight mb-4 font-arabic">
+                    قائمة <span class="text-gold-gradient">الطعام</span>
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto font-light">
+                    رحلة عبر الزمن مع كل طبق، نكهات أصيلة محضرة بكل شغف لترضي ذائقتكم الرفيعة
+                </p>
+            </div>
+        </section>
+        <div
+            class="sticky top-[73px] z-40 bg-background-dark/95 backdrop-blur-xl border-b border-white/5 shadow-2xl transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 md:px-6">
+                <div class="flex items-center gap-2 md:gap-8 overflow-x-auto no-scrollbar py-4 md:justify-center">
+                    <a class="category-link active whitespace-nowrap text-base font-bold px-4 py-2 border-b-2 border-transparent hover:text-primary transition-colors cursor-pointer"
+                        href="#appetizers">المقبلات</a>
+                    <a class="category-link whitespace-nowrap text-base font-medium text-gray-400 px-4 py-2 border-b-2 border-transparent hover:text-primary transition-colors cursor-pointer"
+                        href="#main-courses">الأطباق الرئيسية</a>
+                    <a class="category-link whitespace-nowrap text-base font-medium text-gray-400 px-4 py-2 border-b-2 border-transparent hover:text-primary transition-colors cursor-pointer"
+                        href="#seafood">المأكولات البحرية</a>
+                    <a class="category-link whitespace-nowrap text-base font-medium text-gray-400 px-4 py-2 border-b-2 border-transparent hover:text-primary transition-colors cursor-pointer"
+                        href="#desserts">الحلويات</a>
+                    <a class="category-link whitespace-nowrap text-base font-medium text-gray-400 px-4 py-2 border-b-2 border-transparent hover:text-primary transition-colors cursor-pointer"
+                        href="#beverages">المشروبات</a>
+                </div>
+            </div>
+        </div>
+        <main class="relative z-10 pb-24">
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+                <div class="absolute top-[10%] left-[5%] w-96 h-96 bg-primary/5 rounded-full blur-[120px]"></div>
+                <div class="absolute top-[40%] right-[5%] w-80 h-80 bg-primary/5 rounded-full blur-[100px]"></div>
+                <div class="absolute bottom-[20%] left-[10%] w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
+            </div>
+            <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+                <section class="menu-section py-12 border-b border-white/5" id="appetizers">
+                    <div class="flex items-center gap-4 mb-10">
+                        <span class="size-2 bg-primary rounded-full shadow-[0_0_10px_#f5c73d]"></span>
+                        <h2 class="text-3xl font-black font-arabic text-white">المقبلات والسلطات</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                            <div class="relative h-56 overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvb4dK403Cdo9lBWZRKJD6sNo_WRCsAiHwEHygS2Io43I-udD3qLYLkfSm0zCeP4MJ1eXJlcmMHdTWd0qjNhD1zK4tCK5PhHQlYI0BOpNdm97PlqIurI7cGRgpWgRvw32YlVWTE2-c8LwqT9VSCk1YGtVrwSXzZVLzI8HHgBwifVo1xYukL-Cd1PhXfFBhqZtGp8vh6eOfohqPVBr-r9O0OLiPmaTmOkoAGtWbRNhNGbSoBFV0Q2dH-FNSCUkF1M5u7D92BOQg5fE');">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80">
+                                </div>
+                            </div>
+                            <div class="p-6 pt-2 flex-grow flex flex-col">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">
+                                        شوربة الجريش</h3>
+                                    <span class="text-primary font-bold bg-primary/10 px-2 py-1 rounded text-sm">٣.٥٠٠
+                                        د.ك</span>
+                                </div>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">شوربة كويتية تقليدية
+                                    محضرة من حب الهريس واللحم الطازج.</p>
+                                <button
+                                    class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white hover:text-background-dark text-sm font-bold transition-all border border-white/10 hover:border-primary flex items-center justify-center gap-2 group-hover:shadow-[0_0_15px_rgba(245,199,61,0.2)]">
+                                    <span class="material-symbols-outlined text-[18px]">add</span>
+                                    <span>إضافة للطلب</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                            <div class="relative h-56 overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAY31ilreQ4YHHEiD9cF4wJbHkKDk9r8sB1wPIzxl2aK2nJ6LeeJr79NCv6hzCHaOQIFBSbxoVJt9ueks4ud2GHq9Z0mciH0Y8ejiWf0LgQJMeKo7tY9is9W_gnetzN5hrvqOOw85IRaM_qsd6TKAb3F4Rwa-Yjh992MhpqW6VRVxtZ8dBfAZSiNqDYzQ4Apaf6bowXMv0gYNTAqrknF0gNETGlJUukKoIeXGD8fRHhZsLU4MATLtBwqOUmUU5WdQhELrBuQMVYN4s');">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80">
+                                </div>
+                            </div>
+                            <div class="p-6 pt-2 flex-grow flex flex-col">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">
+                                        سلطة الجرجير والرمان</h3>
+                                    <span class="text-primary font-bold bg-primary/10 px-2 py-1 rounded text-sm">٤.٠٠٠
+                                        د.ك</span>
+                                </div>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">أوراق الجرجير الطازجة مع
+                                    حب الرمان والجوز، متبلة بصلصة دبس الرمان الخاصة.</p>
+                                <button
+                                    class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white hover:text-background-dark text-sm font-bold transition-all border border-white/10 hover:border-primary flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-[18px]">add</span>
+                                    <span>إضافة للطلب</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl overflow-hidden group flex flex-col">
+                            <div class="relative h-56 overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvb4dK403Cdo9lBWZRKJD6sNo_WRCsAiHwEHygS2Io43I-udD3qLYLkfSm0zCeP4MJ1eXJlcmMHdTWd0qjNhD1zK4tCK5PhHQlYI0BOpNdm97PlqIurI7cGRgpWgRvw32YlVWTE2-c8LwqT9VSCk1YGtVrwSXzZVLzI8HHgBwifVo1xYukL-Cd1PhXfFBhqZtGp8vh6eOfohqPVBr-r9O0OLiPmaTmOkoAGtWbRNhNGbSoBFV0Q2dH-FNSCUkF1M5u7D92BOQg5fE');">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80">
+                                </div>
+                            </div>
+                            <div class="p-6 pt-2 flex-grow flex flex-col">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-white group-hover:text-primary transition-colors">
+                                        مشكل مقبلات نثري</h3>
+                                    <span class="text-primary font-bold bg-primary/10 px-2 py-1 rounded text-sm">٦.٥٠٠
+                                        د.ك</span>
+                                </div>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">تشكيلة مختارة من الحمص،
+                                    المتبل، والتبولة تقدم مع خبز التنور الساخن.</p>
+                                <button
+                                    class="w-full py-2.5 rounded-lg bg-white/5 hover:bg-primary text-white hover:text-background-dark text-sm font-bold transition-all border border-white/10 hover:border-primary flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-[18px]">add</span>
+                                    <span>إضافة للطلب</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="menu-section py-12 border-b border-white/5" id="main-courses">
+                    <div class="flex items-center justify-between mb-10">
+                        <div class="flex items-center gap-4">
+                            <span class="size-2 bg-primary rounded-full shadow-[0_0_10px_#f5c73d]"></span>
+                            <h2 class="text-3xl font-black font-arabic text-white">الأطباق الرئيسية</h2>
+                        </div>
+                        <span class="text-xs text-gray-500 hidden md:block">* جميع الأطباق تقدم مع الدقوس
+                            والمعبوج</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                        <div
+                            class="glass-card rounded-2xl overflow-hidden group flex flex-col md:flex-row md:col-span-2">
+                            <div class="relative h-64 md:h-auto md:w-2/5 overflow-hidden">
+                                <div
+                                    class="absolute top-4 right-4 z-10 px-3 py-1 bg-primary text-background-dark font-bold text-sm rounded shadow-lg">
+                                    الأكثر مبيعاً</div>
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJgv631FnSmdES7lw9NIyNmhR43BwdhBsJn_tEenqWkJRGmGbct-3ua2Tfnj5ty7e_BS4deA2ajBZzUyuOy2tKJB4nv70q9BQiCAj16am5nzE-YYwc7gSJ5efCXktJgF0B9CKZXjZ3nIclfbnU1Lv5qK-PpopeO-MtV0SNlnshDQisufZwMO1OImIig4uIUeD0tXyL_OkZzLzwiaNgsl65RLUaqmN43xiC0HGvtwEfYVIElfu1uxJmWMlxTBIo9EmnlLRSn7jmWbg');">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background-dark/90 md:bg-gradient-to-l md:from-background-dark/90 via-transparent to-transparent opacity-80">
+                                </div>
+                            </div>
+                            <div class="p-8 flex flex-col justify-center w-full md:w-3/5">
+                                <div class="flex justify-between items-start mb-3">
+                                    <h3
+                                        class="text-3xl font-bold text-white group-hover:text-primary transition-colors">
+                                        مجبوس دجاج نثري</h3>
+                                    <span class="text-2xl font-bold text-gold-gradient">٦.٢٥٠ د.ك</span>
+                                </div>
+                                <p class="text-gray-400 text-base leading-relaxed mb-6">الدجاج المحمر الفاخر مع حشو
+                                    الزعفران والمكسرات والزبيب، مطبوخ على الطريقة التقليدية الكويتية ويقدم فوق طبقة من
+                                    الأرز البسمتي المعطر بالهيل وماء الورد.</p>
+                                <div class="flex gap-4">
+                                    <button
+                                        class="flex-1 py-3 rounded-xl bg-primary hover:bg-yellow-500 text-background-dark font-bold transition-all shadow-[0_0_20px_rgba(245,199,61,0.2)] flex items-center justify-center gap-2">
+                                        <span class="material-symbols-outlined">add_shopping_cart</span>
+                                        <span>إضافة للسلة</span>
+                                    </button>
+                                    <button
+                                        class="size-12 rounded-xl border border-white/10 hover:border-primary/50 flex items-center justify-center text-white hover:text-primary transition-colors">
+                                        <span class="material-symbols-outlined">favorite</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl overflow-hidden group">
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvb4dK403Cdo9lBWZRKJD6sNo_WRCsAiHwEHygS2Io43I-udD3qLYLkfSm0zCeP4MJ1eXJlcmMHdTWd0qjNhD1zK4tCK5PhHQlYI0BOpNdm97PlqIurI7cGRgpWgRvw32YlVWTE2-c8LwqT9VSCk1YGtVrwSXzZVLzI8HHgBwifVo1xYukL-Cd1PhXfFBhqZtGp8vh6eOfohqPVBr-r9O0OLiPmaTmOkoAGtWbRNhNGbSoBFV0Q2dH-FNSCUkF1M5u7D92BOQg5fE');">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80">
+                                </div>
+                            </div>
+                            <div class="p-6 relative">
+                                <div class="flex justify-between items-center mb-3">
+                                    <h3 class="text-xl font-bold text-white">مجبوس لحم عربي</h3>
+                                    <span class="text-primary font-bold text-lg">٨.٠٠٠ د.ك</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4 line-clamp-2">لحم خروف عربي طازج مطبوخ ببطء لضمان
+                                    الطراوة والنكهة، يقدم مع أرز الزعفران.</p>
+                                <button
+                                    class="w-full h-10 rounded-lg border border-white/10 hover:bg-white/10 text-white text-sm font-bold transition-colors">
+                                    إضافة للطلب
+                                </button>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl overflow-hidden group">
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBojo0ycrsVtB4puffMHvZiLe3kAkkMsR4O2cPr6G-zGoqrbGTDVi5aGWGojmLjB4ZwVHSRZOhHbBUAlWLEqRNUMZCVSQxME8iXjDu-Lsd4mUTITmYnHEiNr53Ytl2AjFNSBkJvWXWLeYL2mbmMPNOILZFjymfhP1YYh6WLunVlwlYP-dWA3dFpU2TkH8vvdeRy2KY0V_0103UtwycuUKtDyZbyjKa5r8DZVxDjANbfB_5IO70RPgO4ckc6XhJjz-2fKrHPI0-9iLA');">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-80">
+                                </div>
+                            </div>
+                            <div class="p-6 relative">
+                                <div class="flex justify-between items-center mb-3">
+                                    <h3 class="text-xl font-bold text-white">برياني لحم</h3>
+                                    <span class="text-primary font-bold text-lg">٧.٥٠٠ د.ك</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4 line-clamp-2">طبقات من الأرز الملون واللحم المتبل
+                                    بخلطة البرياني الخاصة والزبادي.</p>
+                                <button
+                                    class="w-full h-10 rounded-lg border border-white/10 hover:bg-white/10 text-white text-sm font-bold transition-colors">
+                                    إضافة للطلب
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="menu-section py-12 border-b border-white/5" id="seafood">
+                    <div class="flex items-center gap-4 mb-10">
+                        <span class="size-2 bg-primary rounded-full shadow-[0_0_10px_#f5c73d]"></span>
+                        <h2 class="text-3xl font-black font-arabic text-white">المأكولات البحرية</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="glass-card rounded-2xl overflow-hidden group">
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDi_Nmd60kOwjSCH-4o34zDSRlxP0T6V3xEg4aD-2pvYg8ZMJXqP0Lw9Dyz8NI8uHVMp4CMM_7qyxBeoddvK5RW6bPgOIcfTlIGqlCXYkmWMuOvrQrq5I_f1QmAXDDp8P8MjcqWN9_nkooOMxG3SePTgSSzrIn0ht6kYz8rYw-jxFVUF8rHBYv1QI0Kj5JEAiNkGt_cdAo3gQGz6nqWDdvWRAEmC1Ja1mngf2jnpL6alOY5VywMov-vCQGBhKWGgFQcLsLO-_qN3Xs');">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60">
+                                </div>
+                            </div>
+                            <div class="p-6 relative">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-white">مطبق زبيدي فاخر</h3>
+                                    <span class="text-primary font-bold text-lg">٨.٥٠٠ د.ك</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4 line-clamp-3">سمك الزبيدي الكويتي الطازج مع الأرز
+                                    المتبل باللومي والزعفران الأصلي، يقدم مع دقوس الطماطم والكزبرة.</p>
+                                <button
+                                    class="w-full h-10 rounded-lg bg-primary hover:bg-yellow-500 text-background-dark font-bold transition-all shadow-lg">
+                                    إضافة للطلب
+                                </button>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl overflow-hidden group">
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBFO0bdfzx6f7gabfe4xCQc4WDYUAuL1kxJmuzwfSl5i6iQbkVAtlvaLkrCiW4jKKCtBHZo6m72IhEAj11cR9IggNYKRmmVMIUjp2doywxBh2mxxLGsMKtK3TOlnLbyfeWV4b6ODA5CJ7gYBD1b-KwAtcGejYaIPRQrZNykA3PCAaGpUpFoNkge3SneehyovAdnZeyRQsU55fl6WRT4y5--n08LYlBHqC0z674cjLOqf9295L24xWS1XJuawMJv6qqkAyCAvcWfSiA');">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60">
+                                </div>
+                            </div>
+                            <div class="p-6 relative">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-white">مربين ربيان</h3>
+                                    <span class="text-primary font-bold text-lg">٧.٧٥٠ د.ك</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4 line-clamp-3">ربيان طازج مطبوخ مع الأرز والشبنت
+                                    والكزبرة بخلطة نثري السرية الخاصة، يقدم مع معبوج أخضر.</p>
+                                <button
+                                    class="w-full h-10 rounded-lg border border-white/10 hover:bg-white/10 text-white text-sm font-bold transition-colors">
+                                    إضافة للطلب
+                                </button>
+                            </div>
+                        </div>
+                        <div class="glass-card rounded-2xl overflow-hidden group">
+                            <div class="relative h-64 overflow-hidden">
+                                <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDi_Nmd60kOwjSCH-4o34zDSRlxP0T6V3xEg4aD-2pvYg8ZMJXqP0Lw9Dyz8NI8uHVMp4CMM_7qyxBeoddvK5RW6bPgOIcfTlIGqlCXYkmWMuOvrQrq5I_f1QmAXDDp8P8MjcqWN9_nkooOMxG3SePTgSSzrIn0ht6kYz8rYw-jxFVUF8rHBYv1QI0Kj5JEAiNkGt_cdAo3gQGz6nqWDdvWRAEmC1Ja1mngf2jnpL6alOY5VywMov-vCQGBhKWGgFQcLsLO-_qN3Xs');">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60">
+                                </div>
+                            </div>
+                            <div class="p-6 relative">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-bold text-white">هامور مشوي</h3>
+                                    <span class="text-primary font-bold text-lg">٩.٠٠٠ د.ك</span>
+                                </div>
+                                <p class="text-gray-400 text-sm mb-4 line-clamp-3">فيليه هامور متبل ومشوي على الفحم،
+                                    يقدم مع أرز أبيض أو بطاطس مشوية وخضار سوتيه.</p>
+                                <button
+                                    class="w-full h-10 rounded-lg border border-white/10 hover:bg-white/10 text-white text-sm font-bold transition-colors">
+                                    إضافة للطلب
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 py-12">
+                    <section class="menu-section" id="desserts">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span class="size-2 bg-primary rounded-full shadow-[0_0_10px_#f5c73d]"></span>
+                            <h2 class="text-3xl font-black font-arabic text-white">الحلويات</h2>
+                        </div>
+                        <div class="space-y-4">
+                            <div
+                                class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:bg-white/5 cursor-pointer">
+                                <div class="size-20 rounded-lg bg-cover bg-center flex-shrink-0"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAY31ilreQ4YHHEiD9cF4wJbHkKDk9r8sB1wPIzxl2aK2nJ6LeeJr79NCv6hzCHaOQIFBSbxoVJt9ueks4ud2GHq9Z0mciH0Y8ejiWf0LgQJMeKo7tY9is9W_gnetzN5hrvqOOw85IRaM_qsd6TKAb3F4Rwa-Yjh992MhpqW6VRVxtZ8dBfAZSiNqDYzQ4Apaf6bowXMv0gYNTAqrknF0gNETGlJUukKoIeXGD8fRHhZsLU4MATLtBwqOUmUU5WdQhELrBuQMVYN4s');">
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex justify-between">
+                                        <h4
+                                            class="text-lg font-bold text-white group-hover:text-primary transition-colors">
+                                            قرص عقيلي</h4>
+                                        <span class="text-primary font-bold">٢.٥٠٠ د.ك</span>
+                                    </div>
+                                    <p class="text-gray-400 text-sm mt-1">كيكة تقليدية بالهيل والزعفران، تقدم مع صوص
+                                        الحليب.</p>
+                                </div>
+                                <button
+                                    class="size-8 rounded-full bg-white/10 hover:bg-primary text-white hover:text-background-dark flex items-center justify-center transition-colors">
+                                    <span class="material-symbols-outlined text-sm">add</span>
+                                </button>
+                            </div>
+                            <div
+                                class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:bg-white/5 cursor-pointer">
+                                <div class="size-20 rounded-lg bg-cover bg-center flex-shrink-0"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvb4dK403Cdo9lBWZRKJD6sNo_WRCsAiHwEHygS2Io43I-udD3qLYLkfSm0zCeP4MJ1eXJlcmMHdTWd0qjNhD1zK4tCK5PhHQlYI0BOpNdm97PlqIurI7cGRgpWgRvw32YlVWTE2-c8LwqT9VSCk1YGtVrwSXzZVLzI8HHgBwifVo1xYukL-Cd1PhXfFBhqZtGp8vh6eOfohqPVBr-r9O0OLiPmaTmOkoAGtWbRNhNGbSoBFV0Q2dH-FNSCUkF1M5u7D92BOQg5fE');">
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex justify-between">
+                                        <h4
+                                            class="text-lg font-bold text-white group-hover:text-primary transition-colors">
+                                            لقيمات بالدبس</h4>
+                                        <span class="text-primary font-bold">٢.٠٠٠ د.ك</span>
+                                    </div>
+                                    <p class="text-gray-400 text-sm mt-1">كرات عجين ذهبية مقرمشة مغطاة بدبس التمر
+                                        والسمسم.</p>
+                                </div>
+                                <button
+                                    class="size-8 rounded-full bg-white/10 hover:bg-primary text-white hover:text-background-dark flex items-center justify-center transition-colors">
+                                    <span class="material-symbols-outlined text-sm">add</span>
+                                </button>
+                            </div>
+                            <div
+                                class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:bg-white/5 cursor-pointer">
+                                <div class="size-20 rounded-lg bg-cover bg-center flex-shrink-0"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBojo0ycrsVtB4puffMHvZiLe3kAkkMsR4O2cPr6G-zGoqrbGTDVi5aGWGojmLjB4ZwVHSRZOhHbBUAlWLEqRNUMZCVSQxME8iXjDu-Lsd4mUTITmYnHEiNr53Ytl2AjFNSBkJvWXWLeYL2mbmMPNOILZFjymfhP1YYh6WLunVlwlYP-dWA3dFpU2TkH8vvdeRy2KY0V_0103UtwycuUKtDyZbyjKa5r8DZVxDjANbfB_5IO70RPgO4ckc6XhJjz-2fKrHPI0-9iLA');">
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex justify-between">
+                                        <h4
+                                            class="text-lg font-bold text-white group-hover:text-primary transition-colors">
+                                            أم علي الفاخرة</h4>
+                                        <span class="text-primary font-bold">٣.٠٠٠ د.ك</span>
+                                    </div>
+                                    <p class="text-gray-400 text-sm mt-1">رقائق عجين بالحليب الساخن والمكسرات الفاخرة
+                                        والقشطة.</p>
+                                </div>
+                                <button
+                                    class="size-8 rounded-full bg-white/10 hover:bg-primary text-white hover:text-background-dark flex items-center justify-center transition-colors">
+                                    <span class="material-symbols-outlined text-sm">add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="menu-section" id="beverages">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span class="size-2 bg-primary rounded-full shadow-[0_0_10px_#f5c73d]"></span>
+                            <h2 class="text-3xl font-black font-arabic text-white">المشروبات</h2>
+                        </div>
+                        <div class="space-y-4">
+                            <div
+                                class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:bg-white/5 cursor-pointer">
+                                <div class="size-16 rounded-full bg-cover bg-center flex-shrink-0 border-2 border-primary/20"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAY31ilreQ4YHHEiD9cF4wJbHkKDk9r8sB1wPIzxl2aK2nJ6LeeJr79NCv6hzCHaOQIFBSbxoVJt9ueks4ud2GHq9Z0mciH0Y8ejiWf0LgQJMeKo7tY9is9W_gnetzN5hrvqOOw85IRaM_qsd6TKAb3F4Rwa-Yjh992MhpqW6VRVxtZ8dBfAZSiNqDYzQ4Apaf6bowXMv0gYNTAqrknF0gNETGlJUukKoIeXGD8fRHhZsLU4MATLtBwqOUmUU5WdQhELrBuQMVYN4s');">
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex justify-between items-center">
+                                        <h4 class="text-lg font-bold text-white">لبن بالنعناع</h4>
+                                        <span class="text-primary font-bold text-sm">١.٥٠٠ د.ك</span>
+                                    </div>
+                                    <p class="text-gray-500 text-xs mt-1">طازج ومنعش</p>
+                                </div>
+                                <button
+                                    class="size-8 rounded-full border border-white/10 hover:border-primary text-gray-400 hover:text-primary flex items-center justify-center transition-colors">
+                                    <span class="material-symbols-outlined text-sm">add</span>
+                                </button>
+                            </div>
+                            <div
+                                class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:bg-white/5 cursor-pointer">
+                                <div class="size-16 rounded-full bg-cover bg-center flex-shrink-0 border-2 border-primary/20"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBojo0ycrsVtB4puffMHvZiLe3kAkkMsR4O2cPr6G-zGoqrbGTDVi5aGWGojmLjB4ZwVHSRZOhHbBUAlWLEqRNUMZCVSQxME8iXjDu-Lsd4mUTITmYnHEiNr53Ytl2AjFNSBkJvWXWLeYL2mbmMPNOILZFjymfhP1YYh6WLunVlwlYP-dWA3dFpU2TkH8vvdeRy2KY0V_0103UtwycuUKtDyZbyjKa5r8DZVxDjANbfB_5IO70RPgO4ckc6XhJjz-2fKrHPI0-9iLA');">
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex justify-between items-center">
+                                        <h4 class="text-lg font-bold text-white">فيمتو سلاش</h4>
+                                        <span class="text-primary font-bold text-sm">١.٧٥٠ د.ك</span>
+                                    </div>
+                                    <p class="text-gray-500 text-xs mt-1">مثلج كويتي كلاسيكي</p>
+                                </div>
+                                <button
+                                    class="size-8 rounded-full border border-white/10 hover:border-primary text-gray-400 hover:text-primary flex items-center justify-center transition-colors">
+                                    <span class="material-symbols-outlined text-sm">add</span>
+                                </button>
+                            </div>
+                            <div
+                                class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:bg-white/5 cursor-pointer">
+                                <div class="size-16 rounded-full bg-cover bg-center flex-shrink-0 border-2 border-primary/20"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAvb4dK403Cdo9lBWZRKJD6sNo_WRCsAiHwEHygS2Io43I-udD3qLYLkfSm0zCeP4MJ1eXJlcmMHdTWd0qjNhD1zK4tCK5PhHQlYI0BOpNdm97PlqIurI7cGRgpWgRvw32YlVWTE2-c8LwqT9VSCk1YGtVrwSXzZVLzI8HHgBwifVo1xYukL-Cd1PhXfFBhqZtGp8vh6eOfohqPVBr-r9O0OLiPmaTmOkoAGtWbRNhNGbSoBFV0Q2dH-FNSCUkF1M5u7D92BOQg5fE');">
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex justify-between items-center">
+                                        <h4 class="text-lg font-bold text-white">دلة قهوة عربية</h4>
+                                        <span class="text-primary font-bold text-sm">٣.٥٠٠ د.ك</span>
+                                    </div>
+                                    <p class="text-gray-500 text-xs mt-1">مع الهيل والزعفران (تكفي ٤ أشخاص)</p>
+                                </div>
+                                <button
+                                    class="size-8 rounded-full border border-white/10 hover:border-primary text-gray-400 hover:text-primary flex items-center justify-center transition-colors">
+                                    <span class="material-symbols-outlined text-sm">add</span>
+                                </button>
+                            </div>
+                            <div
+                                class="glass-card rounded-xl p-4 flex items-center gap-4 group hover:bg-white/5 cursor-pointer">
+                                <div class="size-16 rounded-full bg-cover bg-center flex-shrink-0 border-2 border-primary/20"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJgv631FnSmdES7lw9NIyNmhR43BwdhBsJn_tEenqWkJRGmGbct-3ua2Tfnj5ty7e_BS4deA2ajBZzUyuOy2tKJB4nv70q9BQiCAj16am5nzE-YYwc7gSJ5efCXktJgF0B9CKZXjZ3nIclfbnU1Lv5qK-PpopeO-MtV0SNlnshDQisufZwMO1OImIig4uIUeD0tXyL_OkZzLzwiaNgsl65RLUaqmN43xiC0HGvtwEfYVIElfu1uxJmWMlxTBIo9EmnlLRSn7jmWbg');">
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="flex justify-between items-center">
+                                        <h4 class="text-lg font-bold text-white">شاي كشري</h4>
+                                        <span class="text-primary font-bold text-sm">٠.٧٥٠ د.ك</span>
+                                    </div>
+                                    <p class="text-gray-500 text-xs mt-1">شاي أحمر ثقيل</p>
+                                </div>
+                                <button
+                                    class="size-8 rounded-full border border-white/10 hover:border-primary text-gray-400 hover:text-primary flex items-center justify-center transition-colors">
+                                    <span class="material-symbols-outlined text-sm">add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <footer class="bg-[#050505] pt-20 pb-10 border-t border-white/5" id="contact">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                    <div class="flex flex-col gap-6">
+                        <div class="flex items-center gap-3 text-white">
+                            <div
+                                class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary border border-primary/30">
+                                <span class="material-symbols-outlined text-sm">restaurant</span>
+                            </div>
+                            <h3 class="text-xl font-bold font-arabic">مطعم نثري الجهراء</h3>
+                        </div>
+                        <p class="text-gray-500 text-sm leading-relaxed">
+                            مطعم كويتي فاخر يقدم تجربة طعام أصيلة تمزج بين التراث والحداثة في قلب الجهراء.
+                        </p>
+                        <div class="flex gap-4">
+                            <a class="size-10 rounded-full bg-white/5 hover:bg-primary hover:text-background-dark text-white flex items-center justify-center transition-all"
+                                href="#">
+                                <span class="text-xs font-bold">IG</span>
+                            </a>
+                            <a class="size-10 rounded-full bg-white/5 hover:bg-primary hover:text-background-dark text-white flex items-center justify-center transition-all"
+                                href="#">
+                                <span class="text-xs font-bold">TW</span>
+                            </a>
+                            <a class="size-10 rounded-full bg-white/5 hover:bg-primary hover:text-background-dark text-white flex items-center justify-center transition-all"
+                                href="#">
+                                <span class="text-xs font-bold">SC</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-6">روابط سريعة</h4>
+                        <ul class="flex flex-col gap-4 text-gray-500 text-sm">
+                            <li><a class="hover:text-primary transition-colors" href="index.html">الرئيسية</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="about.html">عن المطعم</a></li>
+                            <li><a class="text-primary transition-colors" href="menu.html">قائمة الطعام</a></li>
+                            <li><a class="hover:text-primary transition-colors" href="reservations.html">الحجوزات</a>
+                            </li>
+                            <li><a class="hover:text-primary transition-colors" href="gallery.html">معرض الصور</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold mb-6">تواصل معنا</h4>
+                        <ul class="flex flex-col gap-4 text-gray-500 text-sm">
+                            <li class="flex items-start gap-3">
+                                <span class="material-symbols-outlined text-primary mt-0.5 text-lg">location_on</span>
+                                <span>شارع 1, Al Jahra, Kuwait</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary text-lg">call</span>
+                                <a href="tel:+96555855465" dir="ltr"
+                                    class="hover:text-primary transition-colors">+96555855465</a>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary text-lg">star</span>
+                                <span>تقييم 4.0 (157 تقييم)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="rounded-xl overflow-hidden h-48 bg-white/5 relative">
+                        <a href="https://maps.app.goo.gl/5LxrxVZtEPTvjk7k7" target="_blank" class="block w-full h-full">
+                            <div class="w-full h-full bg-cover bg-center opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
+                                data-alt="Map view of Al Jahra, Kuwait"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDF1Jg76wqoi--VBTdcYRbvbxKX62c_JNdLgCi7KsUEjyXt1_r95llL0ygESjktJk4H82wcABLaIMux8HxH8TYxZD9V8kBEddQWyLiITTK6NAGEKi-au9lovuvzf2jmAorB-ZYTx1iKQ-mtWH0a2Dc2CxDivIkt8LY1sXTykn8xigNx49COkmPMyss_0lB96wXI96lLnZB-_pnUHtSkyULLdMKnP9xZzFirI3MokgwSXmEzJQqNe_gWYA-3NmJeNdWnMwuov1IkXWE');">
+                            </div>
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <span
+                                    class="material-symbols-outlined text-primary text-4xl drop-shadow-lg">pin_drop</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div
+                        class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                        <p class="text-gray-600 text-xs">© ٢٠٢٦ مطعم نثري الجهراء. جميع الحقوق محفوظة.</p>
+                        <div class="flex gap-6 text-gray-600 text-xs">
+                            <a class="hover:text-gray-400" href="#">سياسة الخصوصية</a>
+                            <a class="hover:text-gray-400" href="#">الشروط والأحكام</a>
+                        </div>
+                    </div>
+                </div>
+        </footer>
+        <a href="reservations.html"
+            class="fixed bottom-6 left-6 z-40 h-14 pl-4 pr-6 rounded-full bg-primary text-background-dark shadow-[0_0_20px_rgba(245,199,61,0.4)] flex items-center gap-3 hover:scale-105 transition-transform cursor-pointer">
+            <div class="relative">
+                <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                <span
+                    class="absolute -top-1 -right-1 size-4 bg-red-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center">٢</span>
+            </div>
+            <span class="font-bold">١٤.٢٥٠ د.ك</span>
+        </a>
+    </div>
+
+</body>
+
+</html>

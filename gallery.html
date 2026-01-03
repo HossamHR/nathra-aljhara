@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>معرض الصور - مطعم نثري الجهراء | Gallery</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans+Arabic:wght@100..900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f5c73d",
+                        "primary-hover": "#e0b12d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#181611", /* Matching the snippet's dark background */
+                        "surface-dark": "#232018",
+                        "surface-light": "#393528",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans Arabic", "sans-serif"],
+                        "body": ["Manrope", "Noto Sans Arabic", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', 'Noto Sans Arabic', sans-serif;
+        }
+
+        /* Custom scrollbar for modern feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #181611;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #393528;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f5c73d;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .image-card:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .image-card:hover .image-bg {
+            transform: scale(1.1);
+        }
+
+        .image-card:hover .card-text {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body
+    class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden text-white">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 w-full glass-panel border-b border-surface-light/30">
+        <div class="px-4 md:px-10 py-3 flex items-center justify-between mx-auto max-w-[1400px]">
+            <!-- Logo Section -->
+            <div class="flex items-center gap-4 text-white">
+                <div class="text-primary">
+                    <span class="material-symbols-outlined !text-[32px]">restaurant</span>
+                </div>
+                <a href="index.html" class="text-white text-xl font-bold leading-tight tracking-tight">مطعم نثري
+                    الجهراء</a>
+            </div>
+            <!-- Navigation (Desktop) -->
+            <div class="hidden lg:flex items-center gap-9">
+                <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium"
+                    href="index.html">الرئيسية</a>
+                <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium" href="menu.html">قائمة
+                    الطعام</a>
+                <a class="text-primary text-sm font-bold" href="gallery.html">معرض الصور</a>
+                <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium" href="about.html">عن
+                    المطعم</a>
+                <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium"
+                    href="contact.html">تواصل معنا</a>
+            </div>
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <a href="reservations.html"
+                    class="hidden sm:flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary hover:bg-primary-hover transition-colors text-background-dark text-sm font-bold leading-normal">
+                    <span class="truncate">احجز طاولة</span>
+                </a>
+                <!-- Mobile Menu Icon -->
+                <button class="lg:hidden text-white">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow flex flex-col items-center w-full">
+        <!-- Hero Section -->
+        <section class="relative w-full h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+            <!-- Background Image with Overlay -->
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+                data-alt="Cinematic dark close up of arabic spices and steam rising from a dish"
+                style='background-image: linear-gradient(rgba(24, 22, 17, 0.3), rgba(24, 22, 17, 1)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4pHnV-g4e9WiVYMWruog9W5EfrWju1vxeUe9iOF0FGC3k44nrNwOQ_aJykoTHU0TSGl-XtjTCXVsZPLKdAvF_Vie4uk28MbuJiCLE421CPdO-dr5EXVulFZtx4wKDPeviaKtH6IvCVwmZ5dFuvqJadM_RlgNpEC9C6juULykjjANyqZqbceoU8RDG6OypdPAeCgmOIB_xr_Fmi-Ok43cqjviC10ME6cA4BmbQiJTAoQjQ7XQnMr3dQV_U_oRDrcCfA72JzGuAEKI");'>
+            </div>
+            <div class="relative z-10 text-center px-4 max-w-4xl animate-fade-in-up">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-light/30 backdrop-blur-md border border-white/10 mb-4">
+                    <span class="material-symbols-outlined text-primary text-sm">photo_camera</span>
+                    <span class="text-xs font-medium text-primary uppercase tracking-wider">تجربة بصرية</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black text-white mb-4 leading-tight">
+                    معرض الصور
+                </h1>
+                <p class="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+                    رحلة بصرية في عالم النكهات الكويتية الفاخرة، حيث يلتقي التراث بالأناقة العصرية في كل طبق وتفصيل.
+                </p>
+            </div>
+        </section>
+        <!-- Filters / Chips -->
+        <div class="w-full max-w-[1400px] px-4 md:px-10 -mt-8 relative z-20">
+            <div
+                class="glass-panel rounded-2xl p-4 flex gap-3 overflow-x-auto no-scrollbar shadow-xl border-surface-light/20">
+                <!-- Active Chip -->
+                <button
+                    class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary px-4 transition-transform hover:scale-105">
+                    <span class="material-symbols-outlined text-background-dark text-[20px]">grid_view</span>
+                    <p class="text-background-dark text-sm font-bold">الكل</p>
+                </button>
+                <!-- Inactive Chips -->
+                <button
+                    class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-light hover:bg-surface-light/80 px-4 transition-all hover:scale-105 group">
+                    <span
+                        class="material-symbols-outlined text-white group-hover:text-primary transition-colors text-[20px]">skillet</span>
+                    <p class="text-white text-sm font-medium">مشويات ومقلاة</p>
+                </button>
+                <button
+                    class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-light hover:bg-surface-light/80 px-4 transition-all hover:scale-105 group">
+                    <span
+                        class="material-symbols-outlined text-white group-hover:text-primary transition-colors text-[20px]">rice_bowl</span>
+                    <p class="text-white text-sm font-medium">أطباق الأرز</p>
+                </button>
+                <button
+                    class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-light hover:bg-surface-light/80 px-4 transition-all hover:scale-105 group">
+                    <span
+                        class="material-symbols-outlined text-white group-hover:text-primary transition-colors text-[20px]">tapas</span>
+                    <p class="text-white text-sm font-medium">مقبلات ومزة</p>
+                </button>
+                <button
+                    class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-light hover:bg-surface-light/80 px-4 transition-all hover:scale-105 group">
+                    <span
+                        class="material-symbols-outlined text-white group-hover:text-primary transition-colors text-[20px]">bakery_dining</span>
+                    <p class="text-white text-sm font-medium">الحلويات</p>
+                </button>
+                <button
+                    class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-light hover:bg-surface-light/80 px-4 transition-all hover:scale-105 group">
+                    <span
+                        class="material-symbols-outlined text-white group-hover:text-primary transition-colors text-[20px]">storefront</span>
+                    <p class="text-white text-sm font-medium">الأجواء الداخلية</p>
+                </button>
+            </div>
+        </div>
+        <!-- Main Gallery Grid (Masonry Style feel using CSS Grid) -->
+        <section class="w-full max-w-[1400px] px-4 md:px-10 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-[300px]">
+                <!-- Large Item (Spans 2 cols, 2 rows) -->
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden md:col-span-2 md:row-span-2 shadow-lg cursor-pointer bg-surface-light">
+                    <div class="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out"
+                        data-alt="Large platter of traditional Kuwaiti Lamb Machboos with nuts and raisins"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAV4kTuErUA6pVsZ_rQ8TP6-Kqkn1eLNSZ2KTv2qpzEPkbzVN40B_mi8unq1LuByPoH5D08NWTOUbiHXiVjyifmQbMSlX_epn2QlNF18xvCPiNy1DvxwVA6zbdhpKdf9ktliapugqQbf8BwXgM0wA34m5PsmcGeLZdsQfJtlQtkC1BNCPpLdYkomTEn6fER9AfHgEEnnnOdcMy_4aN5Zpn2mR0OWjgiHK5Kdoehws0lCwigu41iP7HVwO0MEHNuebHTaXWhWDu8OW4");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity">
+                    </div>
+                    <!-- Glass Overlay -->
+                    <div
+                        class="image-overlay absolute inset-0 flex flex-col justify-end p-8 bg-black/40 backdrop-blur-[2px] opacity-0 transition-opacity duration-500">
+                        <div class="card-text transform translate-y-4 transition-transform duration-500">
+                            <span class="text-primary font-bold text-sm tracking-wide mb-1 block">الأكثر طلباً</span>
+                            <h3 class="text-white text-3xl font-bold mb-2">مجبوس لحم فاخر</h3>
+                            <p class="text-white/80 text-base line-clamp-2">طبق الكويت الأول، يُقدم مع الأرز البسمتي
+                                الفاخر واللحم العربي الطازج المطهو ببطء.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tall Item (Spans 1 col, 2 rows) -->
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden row-span-2 shadow-lg cursor-pointer bg-surface-light">
+                    <div class="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out"
+                        data-alt="Vertical shot of pouring traditional Arabic coffee into a small cup"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCB7vmK-o90V1tMWGYbhrKOlLe1iE2yS_pwEDgjgxV4NIa0aT-7QBmp8Ebh-NxzcP44Pdj-FvvVTuBHhUMrwqbWfC-GoXUiyvz5hGKFA8Ozbob_SE2gepQEZDWId3fEKsYa8arvdp9H5I7eRxof-kpQAfU39Ix4WBTiqVqx7aoE5sHxBLlGjLBfKMjgwS8yVDYxpKwzsMG5OxIadtuE1aI01F8rP01FkWm-Y2fzb8nqtf2UGL-BsA26TdYF8elywoyihTfvKtymazs");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80">
+                    </div>
+                    <div
+                        class="image-overlay absolute inset-0 flex flex-col justify-end p-6 bg-black/40 backdrop-blur-[2px] opacity-0 transition-opacity duration-500">
+                        <div class="card-text transform translate-y-4 transition-transform duration-500">
+                            <h3 class="text-white text-xl font-bold mb-1">القهوة العربية</h3>
+                            <p class="text-white/80 text-sm">رمز الضيافة الأصيلة مع الهيل والزعفران.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Regular Items -->
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden shadow-lg cursor-pointer bg-surface-light">
+                    <div class="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out"
+                        data-alt="Close up of grilled kebab skewers on a wooden board"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2C36Rgg51TkeN5B_qPmk56Dj1kJw_2m9DZiq0w64QsPsUhZMecxnNqdindIj7OWmc7TkdnXjJ1Icd_itYPMhmtbh86P5P-9bPn-jODNtzmLAwBgzrCgx4UMHceMjbh8pAgDDCslrcFPfn2NPaQnIU5tVK1u6iyqAsiXihSXlLPb7_PchNe6mxQzr8bxAJt_TDr1_AkMX6WHW8jFTKBEnVtrW5gUBsYgemNYx75wHqgvuhzH00cUKijzoke8ATGspjdoGlLonJleo");'>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+                    <div
+                        class="image-overlay absolute inset-0 flex flex-col justify-end p-6 bg-black/40 backdrop-blur-[2px] opacity-0 transition-opacity duration-500">
+                        <div class="card-text transform translate-y-4 transition-transform duration-500">
+                            <h3 class="text-white text-lg font-bold mb-1">مشاوي مشكلة</h3>
+                            <p class="text-white/80 text-xs">تشكيلة مختارة من أجود اللحوم.</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden shadow-lg cursor-pointer bg-surface-light">
+                    <div class="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out"
+                        data-alt="Bowl of hummus with olive oil and chickpeas"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtO5phgCB-xRSKmQ6dKWGCh7RlxPDhNA0MR0duBPj0JOq9D5cIcQ2YfcpIwST-JyNHUfM4s6BDbaK928Dvp6jdke6ztVBd8vmmLX-iUQjG5ssPhcOPC235o8SY44q6jQadL3dTHzu0eiUOKpVth8KJ-ruiZJ-6aNSG_rpOM-RiC8WUqP6z4IOn7L-80HmBFYuhCH2Cii5w7z8WpxdfCXNjAqsdcWI8kK0R1eBmpflwPoG5XR8whT5-Fhjl974BXxhgFJIclpVWYuY");'>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+                    <div
+                        class="image-overlay absolute inset-0 flex flex-col justify-end p-6 bg-black/40 backdrop-blur-[2px] opacity-0 transition-opacity duration-500">
+                        <div class="card-text transform translate-y-4 transition-transform duration-500">
+                            <h3 class="text-white text-lg font-bold mb-1">مقبلات باردة</h3>
+                            <p class="text-white/80 text-xs">حمص، متبل، وتبولة طازجة.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Wide Item (Spans 2 cols) -->
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden md:col-span-2 shadow-lg cursor-pointer bg-surface-light">
+                    <div class="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out"
+                        data-alt="Wide shot of the restaurant interior showing luxury seating and lighting"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBF7h3DOe58H4SciffovSo1hiWHu-LP4frW1iPNaD8pzGgexneIeyX5J7MVaj6-lC2mG8WMuzBd54OEbk1txlPu-9dfEm1bKChbEu9f91cpF7qj7ThkbS-3kWNgEanmvAZ9w_DWrbaapOFGZApT6uljuxZMTl4lt_BbWzFoAA3CSwOwQ0jPFc90PQPE7BmmmArpH3hz8shyM3xorX4Z-sxghAZAkhYY4DBf5CbEj4tU3jtfwQS7q9Lg6ltxOQU4vhUifw001NaSZnw");'>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+                    <div
+                        class="image-overlay absolute inset-0 flex flex-col justify-end p-6 bg-black/40 backdrop-blur-[2px] opacity-0 transition-opacity duration-500">
+                        <div class="card-text transform translate-y-4 transition-transform duration-500">
+                            <h3 class="text-white text-2xl font-bold mb-1">الجلسات الداخلية</h3>
+                            <p class="text-white/80 text-sm">أجواء عائلية بخصوصية تامة وديكورات عصرية.</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden shadow-lg cursor-pointer bg-surface-light">
+                    <div class="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out"
+                        data-alt="Sweet arabic dessert Kunafa with pistachio"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFfovc7hMW45NvBSqLxG23QG_egvRjAUMiu_Ehd0B6arzYWgiDPEl6pwujlVXfYYcP5ItcjKEqwEedbQ49xhIUJMS4HKhqkHTBW-2idrVHmKdP59Fk1Yq7D7QvV-z0l0OAMSA7qpzNzkqbtZUZ3A4-o-bhmRWtcT_oKPVolG1RvkiAshp1N3haIFSaVaI170inBxkAL0YqVPfmKCQevUeM7Dp4q0jew-Gv6YxFN4bhTbhR-SeiAMvpkbo1-BWyZGVXHPoSg8odOVQ");'>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+                    <div
+                        class="image-overlay absolute inset-0 flex flex-col justify-end p-6 bg-black/40 backdrop-blur-[2px] opacity-0 transition-opacity duration-500">
+                        <div class="card-text transform translate-y-4 transition-transform duration-500">
+                            <h3 class="text-white text-lg font-bold mb-1">كنافة بالجبن</h3>
+                            <p class="text-white/80 text-xs">دافئة ومقرمشة مع القطر الساخن.</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden shadow-lg cursor-pointer bg-surface-light">
+                    <div class="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out"
+                        data-alt="Fresh refreshing mojito drink with mint and lime"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAAE5Z65gxjaPlwe2zcKbWiPyBlIUDgRtFqqEQ0FiUYQS6n3tew327-mkWyn7ApDLj1apLazjFwOutWhqlVH3mAMAZ7I7L5GvLtBHn58LLQJY0aOpozyemUVz3aK9QocNlNZiVF1peIEwsFkVdJSi5MCuiBD8YL7VEyGN5mOJHN_VPmpsE6HF9Zo15ZcTy6q7SnWCc23NZYW-TWSVVrKa_0rnS0f-RwOGrXCNHLv8_gcUHQo4cByF1Q795l3adN0vAMqsDJo4G7vAI");'>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+                    <div
+                        class="image-overlay absolute inset-0 flex flex-col justify-end p-6 bg-black/40 backdrop-blur-[2px] opacity-0 transition-opacity duration-500">
+                        <div class="card-text transform translate-y-4 transition-transform duration-500">
+                            <h3 class="text-white text-lg font-bold mb-1">عصائر طبيعية</h3>
+                            <p class="text-white/80 text-xs">تشكيلة منعشة من الفواكه الموسمية.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Regular Item -->
+                <div
+                    class="image-card relative group rounded-2xl overflow-hidden shadow-lg cursor-pointer bg-surface-light">
+                    <div class="image-bg absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out"
+                        data-alt="Biryani rice dish with fried onions and cashews"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDFCHvH500Gdf9xRCrXLuB-vxFyz-SI0m4IpFmHOayXVotzXDg9cIAYR0tHRivY3TGYgSeOtweUTmPjvFxGgd0orDDbgPyiEWwv9hiVCuhL5Ol_ZKOxDBIxpC5ph7LNKQx7nYDByPTbXlHBrFOQN5u9GR8aQzgMVnGFCjW9kbIpfcHwQ7eLSW9JO--Fr3mRfVho7G0dlRDWzlEwfg_9_j1wnwBq_AsSCRAURUYr5XcRq2kf-FWNSGcbTkB_y9wc0jgbrC6bRylbr8");'>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60"></div>
+                    <div
+                        class="image-overlay absolute inset-0 flex flex-col justify-end p-6 bg-black/40 backdrop-blur-[2px] opacity-0 transition-opacity duration-500">
+                        <div class="card-text transform translate-y-4 transition-transform duration-500">
+                            <h3 class="text-white text-lg font-bold mb-1">برياني دجاج</h3>
+                            <p class="text-white/80 text-xs">نكهات هندية بلمسة كويتية.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Load More Button -->
+            <div class="flex justify-center mt-12">
+                <button
+                    class="group flex items-center gap-2 px-8 py-3 rounded-xl border border-surface-light hover:border-primary bg-transparent text-white hover:text-primary transition-all duration-300">
+                    <span class="text-sm font-bold">عرض المزيد من الصور</span>
+                    <span
+                        class="material-symbols-outlined group-hover:translate-y-1 transition-transform">expand_more</span>
+                </button>
+            </div>
+        </section>
+    </main>
+    <!-- Simple Footer -->
+    <footer class="w-full bg-background-dark border-t border-surface-light/30 pt-16 pb-8">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-10 flex flex-col items-center">
+            <div class="text-primary mb-6">
+                <span class="material-symbols-outlined !text-[48px]">restaurant</span>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-8">مطعم نثري الجهراء</h2>
+            <div class="flex flex-wrap justify-center gap-8 mb-12">
+                <a class="text-white/60 hover:text-primary transition-colors" href="index.html">الرئيسية</a>
+                <a class="text-white/60 hover:text-primary transition-colors" href="about.html">عن المطعم</a>
+                <a class="text-white/60 hover:text-primary transition-colors" href="menu.html">القائمة</a>
+                <a class="text-white/60 hover:text-primary transition-colors" href="reservations.html">الحجوزات</a>
+                <a class="text-white/60 hover:text-primary transition-colors" href="contact.html">تواصل معنا</a>
+            </div>
+            <div
+                class="w-full border-t border-surface-light/30 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
+                <p>© 2024 مطعم نثري الجهراء. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-4">
+                    <a class="hover:text-white transition-colors" href="#">Instagram</a>
+                    <a class="hover:text-white transition-colors" href="#">Twitter</a>
+                    <a class="hover:text-white transition-colors" href="#">Snapchat</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

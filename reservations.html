@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Reservations - مطعم نثري الجهراء</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&amp;family=Plus+Jakarta+Sans:wght@200..800&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f5c73d",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#181611",
+                        "surface-dark": "#221e10",
+                    },
+                    fontFamily: {
+                        "display": ["Cairo", "Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Cairo", "Plus Jakarta Sans", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Cairo", "Plus Jakarta Sans", sans-serif;
+        }
+
+        /* Custom scrollbar for a premium feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #181611;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #393528;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f5c73d;
+        }
+
+        .glass-panel {
+            background: rgba(34, 30, 16, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 199, 61, 0.1);
+        }
+
+        .glass-input {
+            background: rgba(34, 30, 16, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            color: white !important;
+            caret-color: #f5c73d;
+        }
+
+        .glass-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-input:focus {
+            border-color: #f5c73d;
+            background: rgba(34, 30, 16, 0.9) !important;
+            outline: none;
+            box-shadow: 0 0 0 1px rgba(245, 199, 61, 0.2);
+            color: white !important;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark text-white overflow-x-hidden">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <!-- Navbar -->
+        <header class="sticky top-0 z-50 glass-panel border-b-0">
+            <div class="px-6 lg:px-40 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-4 text-white">
+                    <div class="size-10 flex items-center justify-center rounded-full bg-primary/20 text-primary">
+                        <span class="material-symbols-outlined filled">restaurant</span>
+                    </div>
+                    <a href="index.html" class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">مطعم
+                        نثري الجهراء</a>
+                </div>
+                <nav class="hidden md:flex items-center gap-8">
+                    <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium"
+                        href="index.html">الرئيسية</a>
+                    <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium"
+                        href="menu.html">القائمة</a>
+                    <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium"
+                        href="gallery.html">المعرض</a>
+                    <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium"
+                        href="about.html">عن المطعم</a>
+                    <a class="text-white/80 hover:text-primary transition-colors text-sm font-medium"
+                        href="contact.html">اتصل بنا</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="hidden sm:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-6 bg-primary text-[#181611] text-sm font-bold transition-transform hover:scale-105">
+                        <span class="truncate">تسجيل الدخول</span>
+                    </button>
+                    <button class="md:hidden text-white">
+                        <span class="material-symbols-outlined">menu</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content -->
+        <main class="flex-grow relative">
+            <!-- Background with Overlay -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-gradient-to-b from-[#181611]/80 via-[#181611]/90 to-[#181611] z-10">
+                </div>
+                <div class="w-full h-full bg-cover bg-center bg-no-repeat"
+                    data-alt="Close up of traditional arabic spices and food textures dark cinematic lighting"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB3QIixZXK7x-7UqkJqUHUYClgSLW2x1llToshnHXV8pJP0w2JbA8G2azynrX3vDzfMGboETt0GoTkdFwp2V74fiZegPY6hdaQJMiwVzdEEqi8PElhmhmlHH3YeUH63HQNVIZC6FahgAUmVsH7QmFSMwVx0Q2HbGmbm6Vjn3MtkXJWQbHqzFMVPGHxpV_8USR-ZGc61M0Fr3SDldtBp7OSaWI2pPBWzoP7ZBO6rr3fBa6NjGi5sEFOq26mBlB_zevImjR2TmiiyVrE');">
+                </div>
+            </div>
+            <div class="relative z-10 container mx-auto px-4 lg:px-40 py-12 flex flex-col gap-10">
+                <!-- Hero Text -->
+                <div class="text-center space-y-4 mb-8">
+                    <h1 class="text-4xl md:text-6xl font-black text-white tracking-tight">
+                        احجز <span class="text-primary">طاولتك</span>
+                    </h1>
+                    <p class="text-white/60 text-lg md:text-xl font-light max-w-2xl mx-auto">
+                        استمتع بتجربة طعام كويتية فاخرة تمزج بين الأصالة والحداثة في أجواء راقية.
+                    </p>
+                </div>
+                <!-- Reservation Glass Card -->
+                <div class="glass-panel rounded-2xl p-6 md:p-10 shadow-2xl shadow-black/50 max-w-5xl mx-auto w-full">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                        <!-- Right Column: Date & Time -->
+                        <div class="lg:col-span-7 flex flex-col gap-8">
+                            <!-- Calendar Section -->
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-primary">calendar_month</span>
+                                        اختر التاريخ
+                                    </h3>
+                                    <div class="flex items-center gap-2">
+                                        <button
+                                            class="size-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors">
+                                            <span class="material-symbols-outlined text-sm">chevron_right</span>
+                                        </button>
+                                        <span class="text-sm font-bold text-primary">أكتوبر 2023</span>
+                                        <button
+                                            class="size-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors">
+                                            <span class="material-symbols-outlined text-sm">chevron_left</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="bg-surface-dark/50 rounded-xl p-4 border border-white/5">
+                                    <div class="grid grid-cols-7 text-center gap-y-2">
+                                        <!-- Days Header -->
+                                        <div class="text-xs font-medium text-white/40 py-2">أحد</div>
+                                        <div class="text-xs font-medium text-white/40 py-2">إثنين</div>
+                                        <div class="text-xs font-medium text-white/40 py-2">ثلاثاء</div>
+                                        <div class="text-xs font-medium text-white/40 py-2">أربعاء</div>
+                                        <div class="text-xs font-medium text-white/40 py-2">خميس</div>
+                                        <div class="text-xs font-medium text-white/40 py-2">جمعة</div>
+                                        <div class="text-xs font-medium text-white/40 py-2">سبت</div>
+                                        <!-- Empty Days -->
+                                        <div class="h-10"></div>
+                                        <div class="h-10"></div>
+                                        <div class="h-10"></div>
+                                        <!-- Days -->
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">1</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">2</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">3</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">4</button>
+                                        <!-- Selected Day -->
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-[#181611] font-bold bg-primary shadow-lg shadow-primary/20">5</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">6</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">7</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">8</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">9</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">10</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white/30 cursor-not-allowed"
+                                            disabled="">11</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">12</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">13</button>
+                                        <button
+                                            class="h-10 w-full flex items-center justify-center rounded-lg text-sm text-white hover:bg-white/10">14</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Time Section -->
+                            <div class="space-y-4">
+                                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary">schedule</span>
+                                    الوقت المتاح
+                                </h3>
+                                <div class="flex flex-wrap gap-3">
+                                    <button
+                                        class="group flex h-9 items-center gap-2 rounded-lg bg-surface-dark border border-white/10 px-4 hover:border-primary/50 hover:bg-surface-dark/80 transition-all">
+                                        <span class="text-white text-sm">1:00 PM</span>
+                                    </button>
+                                    <button
+                                        class="group flex h-9 items-center gap-2 rounded-lg bg-surface-dark border border-white/10 px-4 hover:border-primary/50 hover:bg-surface-dark/80 transition-all">
+                                        <span class="text-white text-sm">1:30 PM</span>
+                                    </button>
+                                    <button
+                                        class="group flex h-9 items-center gap-2 rounded-lg bg-primary border border-primary px-4 shadow-lg shadow-primary/20">
+                                        <span class="text-[#181611] font-bold text-sm">7:00 PM</span>
+                                        <span class="material-symbols-outlined text-[#181611] text-[16px]">check</span>
+                                    </button>
+                                    <button
+                                        class="group flex h-9 items-center gap-2 rounded-lg bg-surface-dark border border-white/10 px-4 hover:border-primary/50 hover:bg-surface-dark/80 transition-all">
+                                        <span class="text-white text-sm">7:30 PM</span>
+                                    </button>
+                                    <button
+                                        class="group flex h-9 items-center gap-2 rounded-lg bg-surface-dark border border-white/10 px-4 hover:border-primary/50 hover:bg-surface-dark/80 transition-all">
+                                        <span class="text-white text-sm">8:00 PM</span>
+                                    </button>
+                                    <button
+                                        class="group flex h-9 items-center gap-2 rounded-lg bg-surface-dark border border-white/10 px-4 hover:border-primary/50 hover:bg-surface-dark/80 transition-all">
+                                        <span class="text-white text-sm">8:30 PM</span>
+                                    </button>
+                                    <button
+                                        class="group flex h-9 items-center gap-2 rounded-lg bg-surface-dark border border-white/10 px-4 hover:border-primary/50 hover:bg-surface-dark/80 transition-all">
+                                        <span class="text-white text-sm">9:00 PM</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Left Column: Details & Confirmation -->
+                        <div class="lg:col-span-5 flex flex-col gap-6 lg:border-r lg:border-white/10 lg:pr-12">
+                            <!-- Guests Slider -->
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-primary">groups</span>
+                                        عدد الضيوف
+                                    </h3>
+                                    <span id="guestCountDisplay" class="text-xl font-bold text-primary">4</span>
+                                </div>
+                                <div
+                                    class="h-14 bg-surface-dark/50 rounded-xl border border-white/5 flex items-center px-4 relative">
+                                    <input type="range" id="guestSlider" min="1" max="10" value="4"
+                                        class="guest-slider w-full h-1.5 rounded-full appearance-none cursor-pointer"
+                                        oninput="updateGuestCount(this.value)">
+                                </div>
+                                <div class="flex justify-between text-xs text-white/40 px-1">
+                                    <span>1</span>
+                                    <span>10+</span>
+                                </div>
+                            </div>
+                            <!-- Input Fields -->
+                            <div class="space-y-4 pt-4">
+                                <div class="space-y-1">
+                                    <label class="text-sm font-medium text-white/80">الاسم الكامل</label>
+                                    <div class="relative">
+                                        <span
+                                            class="material-symbols-outlined absolute right-3 top-3 text-white/40">person</span>
+                                        <input
+                                            class="glass-input w-full rounded-xl py-2.5 pr-10 pl-4 text-white placeholder-white/30 text-sm"
+                                            placeholder="أدخل اسمك" type="text" />
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-sm font-medium text-white/80">رقم الهاتف</label>
+                                    <div class="relative">
+                                        <span
+                                            class="material-symbols-outlined absolute right-3 top-3 text-white/40">call</span>
+                                        <input
+                                            class="glass-input w-full rounded-xl py-2.5 pr-10 pl-4 text-white placeholder-white/30 text-sm"
+                                            placeholder="+965 XXXXXXXX" type="tel" />
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <label class="text-sm font-medium text-white/80">طلبات خاصة</label>
+                                    <textarea
+                                        class="glass-input w-full rounded-xl py-2.5 px-4 text-white placeholder-white/30 text-sm resize-none"
+                                        placeholder="هل لديك أي ملاحظات للحساسية أو مناسبة خاصة؟" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <!-- Summary & CTA -->
+                            <div class="mt-auto pt-6 space-y-4">
+                                <div class="flex justify-between items-center text-sm py-2 border-t border-white/10">
+                                    <span class="text-white/60">التاريخ المختار</span>
+                                    <span class="text-white font-medium">5 أكتوبر، 7:00 م</span>
+                                </div>
+                                <button
+                                    class="w-full h-12 bg-primary hover:bg-primary/90 text-[#181611] rounded-xl font-bold text-base shadow-lg shadow-primary/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined">check_circle</span>
+                                    تأكيد الحجز
+                                </button>
+                                <p class="text-xs text-center text-white/40">بضغطك على تأكيد الحجز، أنت توافق على شروط
+                                    وسياسة المطعم.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Info Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto w-full">
+                    <div class="glass-panel p-6 rounded-xl flex items-start gap-4">
+                        <div class="bg-primary/10 p-3 rounded-lg text-primary">
+                            <span class="material-symbols-outlined">location_on</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">الموقع</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">شارع 1, Al Jahra, Kuwait</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-xl flex items-start gap-4">
+                        <div class="bg-primary/10 p-3 rounded-lg text-primary">
+                            <span class="material-symbols-outlined">schedule</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">ساعات العمل</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">يومياً من 12:00 م حتى 11:00 م</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-6 rounded-xl flex items-start gap-4">
+                        <div class="bg-primary/10 p-3 rounded-lg text-primary">
+                            <span class="material-symbols-outlined">call</span>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">للتواصل</h4>
+                            <p class="text-white/60 text-sm leading-relaxed">+96555855465</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Minimal Footer -->
+        <footer class="border-t border-[#393528] bg-[#181611] py-8 z-10 relative">
+            <div class="container mx-auto px-6 lg:px-40 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/40 text-sm">© 2024 مطعم نثري الجهراء. جميع الحقوق محفوظة.</p>
+                <div class="flex gap-6">
+                    <a class="text-white/40 hover:text-primary transition-colors text-sm" href="#">الشروط والأحكام</a>
+                    <a class="text-white/40 hover:text-primary transition-colors text-sm" href="#">سياسة الخصوصية</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        function updateGuestCount(value) {
+            document.getElementById('guestCountDisplay').textContent = value;
+            const slider = document.getElementById('guestSlider');
+            const percentage = ((value - 1) / 9) * 100;
+            slider.style.background = `linear-gradient(to left, #f5c73d ${percentage}%, rgba(255,255,255,0.1) ${percentage}%)`;
+        }
+
+        // Initialize slider background on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateGuestCount(4);
+        });
+    </script>
+    <style>
+        /* Custom slider styling */
+        .guest-slider {
+            background: linear-gradient(to left, #f5c73d 33.33%, rgba(255, 255, 255, 0.1) 33.33%);
+        }
+
+        .guest-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+            margin-top: -7px;
+        }
+
+        .guest-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        .guest-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .guest-slider::-webkit-slider-runnable-track {
+            height: 6px;
+            border-radius: 3px;
+        }
+
+        .guest-slider::-moz-range-track {
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</body>
+
+</html>
